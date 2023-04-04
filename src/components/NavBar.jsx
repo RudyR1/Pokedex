@@ -1,3 +1,5 @@
+import { element } from "prop-types";
+
 const NavBar = ({pokemonList, pokemonIndex, setPokemonIndex}) => {
     
     const ShowPrevious = () => {
@@ -10,9 +12,13 @@ const NavBar = ({pokemonList, pokemonIndex, setPokemonIndex}) => {
 
       return (
         <nav>
-        {pokemonIndex > 0 && ( <button type='button' onClick={ShowPrevious}>Previous</button>)}
+            {pokemonList.map((pokemon, index) => (
+                <button type="button" onClick={() => setPokemonIndex(index)} 
+                key={index}>{pokemon.name}</button>
+            )
+            )}
+
         
-        {pokemonIndex < pokemonList.length-1 && (<button type='button' onClick={NextPrevious}>Next</button>)}
 
       </nav>
       )
